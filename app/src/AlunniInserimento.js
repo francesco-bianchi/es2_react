@@ -21,24 +21,24 @@ function AlunniInserimento(props) {
         caricaAlunni();
     }
 
-  return (
-    <>
-        {!form && 
-            <button onClick={() =>viewForm(true)}>Inserisci alunno</button>
-        }
-        {form && 
-            <div>
-                <label>Nome:</label>
-                <input type="text" onChange={impostaNome}/>
-                <label>Cognome:</label>
-                <input type="text" onChange = {(evento) => setCognome(evento.target.value)}/>
-                <button onClick={handleClickIns}>Save</button>
-                <button onClick={() =>viewForm(false)}>Annulla</button>
-            </div>
-        }
+    return (
+        <>
+            {!form && 
+                <button onClick={() =>viewForm(true)}>Inserisci alunno</button>
+            }
+            {form && 
+                <div>
+                    <label>Nome:</label>
+                    <input type="text" onChange={impostaNome}/>
+                    <label>Cognome:</label>
+                    <input type="text" onChange = {(evento) => setCognome(evento.target.value)}/>
+                    <button onClick={handleClickIns}>Save</button>
+                    <button onClick={() =>viewForm(false)}>Annulla</button>
+                </div>
+            }
 
-    </>
-  )
+        </>
+    );
 
 }
 

@@ -16,22 +16,22 @@ function AlunniRow(props) {
         caricaAlunni();
     }
 
-  return (
-    <tr key={alunno.id}>
-        <td>{alunno.id}</td>
-        <td>{alunno.nome}</td>
-        <td>{alunno.cognome}</td>
-        <td>
-            {deleting && 
-            <p>Sei sicuro? <button onClick={() => handleClickDeleteSi(alunno.id)}>Si</button> <button onClick={handleClickDelete}>No</button></p>
-            }
-            {!deleting && 
-            <button onClick={handleClickDelete}>Delete</button>
-            }
-        </td>
-    </tr>
-    
-  );
+    return (
+        <tr key={alunno.id}>
+            <td>{alunno.id}</td>
+            <td>{alunno.nome}</td>
+            <td>{alunno.cognome}</td>
+            <td>
+                {deleting && 
+                <p>Sei sicuro? <button onClick={() => handleClickDeleteSi(alunno.id)}>Si</button> <button onClick={handleClickDelete}>No</button></p>
+                }
+                {!deleting && 
+                <button onClick={handleClickDelete}>Delete</button>
+                }
+            </td>
+        </tr>
+        
+    );
   
 
 }

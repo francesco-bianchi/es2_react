@@ -26,7 +26,8 @@ function App() {
         <div>
           {alunni.length === 0 ? (
             <button onClick={handleClickAlunni}>Carica alunni</button> 
-          ):( <><table className="tabellaAlunni">
+          ):( <>
+            <table className="tabellaAlunni">
               {alunni.map((alunno) => <tbody>
                 <AlunniRow alunno={alunno} caricaAlunni={handleClickAlunni} />
               </tbody>
