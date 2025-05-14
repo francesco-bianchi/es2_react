@@ -1,24 +1,46 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react';
+import AlunniRow from './AlunniRow';
+import AlunniInserimento from './AlunniInserimento';
 
 function App() {
+  const [alunni, setAlunni] = useState([]);
+  const [loading, setLoad] = useState(false);
 
-  const alunniInit = [{"id":"1","nome":"claudio","cognome":"benve"},{"id":"2","nome":"ivan","cognome":"bruno"}];
-  
-  const alunni = alunniInit.map(alunno =>
-    <tr>
-      <td>{alunno.id}</td>
-      <td>{alunno.nome}</td>
-      <td>{alunno.cognome}</td>
-    </tr>
-  );
+  async function handleClickAlunni(){
+    setLoad(true);
+    const response = await fetch('http://localhost:8080/alunni', {method: 'GET'});
+    const data = await response.json();
+    console.log(data);
+    setLoad(false);
+    setAlunni(data);
+  }
 
   return (
-    <div>
-      <table border="1">
-          {alunni}
-      </table>
-    </div>
+    <>
+      {loading && 
+        <div>Caricamento in corso</div>
+      }
+      {!loading && 
+        <div>
+          {alunni.length === 0 ? (
+            <button onClick={handleClickAlunni}>Carica alunni</button> 
+          ):( <><table className="tabellaAlunni">
+              {alunni.map((alunno) => <tbody>
+                <AlunniRow alunno={alunno} caricaAlunni={handleClickAlunni} />
+              </tbody>
+              )}
+            </table>
+            <div>
+                <AlunniInserimento caricaAlunni={handleClickAlunni}/>
+            </div></>
+          )}
+        </div>
+      }
+
+
+    </>
   );
 
 }
