@@ -8,6 +8,7 @@ function AlunniRow(props) {
     const alunno = props.alunno;
     const setModifica = props.setModifica;
     const setId = props.setId;
+    const modifica = props.modifica;
     const caricaAlunni = props.caricaAlunni;
 
     
@@ -49,19 +50,29 @@ function AlunniRow(props) {
                 <td>{alunno.id}</td>
                 <td>{alunno.nome}</td>
                 <td>{alunno.cognome}</td>
-                <td>
-                {!edit && 
-                    <button onClick={handleClickEdit}>Edit</button>
-                }
-                <button onClick={() => {setModifica(); setId(alunno.id)}}>Edit2</button>
-                {!deleting && 
-                    <button onClick={handleClickDelete}>Delete</button>
-                }
-                {deleting && 
-                    <span>Sei sicuro? <button onClick={() => handleClickDeleteSi(alunno.id)}>Si</button> 
-                    <button onClick={handleClickDelete}>No</button></span>
-                }
-                </td>
+                {modifica ? (
+                    <td>
+                        <button onClick={() => {setModifica(); setId(alunno.id)}}>Edit2</button>
+                    </td>
+                ):( <>
+                    {deleting ? (
+                        <span>Sei sicuro? <button onClick={() => handleClickDeleteSi(alunno.id)}>Si</button> 
+                        <button onClick={handleClickDelete}>No</button></span>
+                    ) : (
+                        <td>
+                            {!edit && 
+                                <button onClick={handleClickEdit}>Edit</button>
+                            }
+
+                            <button onClick={() => {setModifica(); setId(alunno.id)}}>Edit2</button>
+
+                            {!deleting && 
+                                <button onClick={handleClickDelete}>Delete</button>
+                            }
+                        </td>
+                    )}</>
+                )}
+                
                 </>
             )
                 

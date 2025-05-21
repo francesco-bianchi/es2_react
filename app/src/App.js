@@ -52,7 +52,7 @@ function App() {
           ):( <>
             <table className="tabellaAlunni">
               {alunni.map((alunno) => <tbody>
-                <AlunniRow alunno={alunno} caricaAlunni={handleClickAlunni} setModifica={setModifica} setId={setId}/>
+                <AlunniRow alunno={alunno} caricaAlunni={handleClickAlunni} setModifica={setModifica} setId={setId} modifica={modifica}/>
               </tbody>
               )}
             </table>
