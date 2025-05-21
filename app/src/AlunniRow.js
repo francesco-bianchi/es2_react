@@ -52,7 +52,7 @@ function AlunniRow(props) {
                 <td>{alunno.cognome}</td>
                 {modifica ? (
                     <td>
-                        <button onClick={() => {setModifica(); setId(alunno.id)}}>Edit2</button>
+                        <button onClick={() => {setModifica(); setId(alunno.id)}}>Annulla</button>
                     </td>
                 ):( <>
                     {deleting ? (
